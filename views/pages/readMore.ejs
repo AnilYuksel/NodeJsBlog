@@ -1,0 +1,57 @@
+<%- include('../includes/head.ejs') %>
+  </head>
+
+  <body>
+    <%- include('../includes/nav.ejs') %>
+
+      <section>
+        <div class="d-flex justify-content-center">
+          <div class="card m-5 w-75">
+            <h3 class="card-header" id="posttitle">
+              <%= posts.postTitle %>
+            </h3>
+            <div class="card-body">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <i class="bi bi-person-fill"></i>
+                </li>
+                <li class="list-inline-item">
+                  <h6 class="card-subtitle text-muted">
+                    <%= posts.author.userName %>
+                  </h6>
+                </li>
+              </ul>
+              <hr>
+              <p class="card-text2 lead">
+                <%= posts.postText %>
+              </p>
+              <hr>
+              <a href="/" class="btn">Posts</a>
+              <hr>
+              <form action="/read-more/:postId" method="post">
+                <div class="comment">
+                  <a class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    Add Comment
+                  </a>
+                  <div class="collapse" id="collapseExample">
+                    <div class="row">
+                    <div class="col">
+                      <textarea type="text" class="form-control mt-3" placeholder="Your Comment" rows="1"
+                        name="commentText"></textarea>
+                    </div>
+                    <div class="col">
+                      <button type="submit" class="btn mt-3"><i class="bi bi-send-check"></i></button>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <%- include('../includes/end.ejs') %>

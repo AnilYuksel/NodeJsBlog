@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs')%>
+
+</head>
+<body>
+    <%- include('../includes/nav.ejs')%>
+    <form class="post-form" action="/signup" method="post">
+        <div class="container">
+         <div class="col">
+           <div class="row justify-content-center">
+             <h3 class="header text-center m-3">Sign Up</h3> 
+           </div>
+           <div class="row justify-content-center">
+            <input type="text" class="form-control w-50" placeholder="User Name" name="userName">
+          </div>
+           <div class="row justify-content-center">
+             <input type="email" class="form-control w-50 m-3" placeholder="E-mail" name="email">
+           </div>
+           <div class="row justify-content-center">
+            <input type="password" class="form-control w-50" placeholder="Password" name="password">
+          </div>
+           <div class="row justify-content-center">
+             <button type="submit" class="btn w-25 m-3">Sign up</button>
+           </div>
+         </div>
+       </div>
+       </form>
+
+<%- include('../includes/end.ejs')%>

@@ -1,0 +1,156 @@
+<%- include('../includes/head.ejs') %>
+  </head>
+
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-navbar py-3">
+      <div class="container">
+        <a class="navbar-brand p-2" href="/">BLOG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active p-2" aria-current="page" href="/">Home</a>
+            </li>
+            <% if(displayLink) { %>
+            <li class="nav-item">
+              <a class="nav-link p-2" href="/add-post">Add Post</a>
+            </li>
+            <form class="logout" action="/logout" method="post">
+              <button class="btn btn-link p-2" href="/" type="submit">logout</button>
+            </form>
+            <% }else { %> 
+            <li class="nav-item">
+              <a class="nav-link p-2" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link p-2" href="/signup">Register</a>
+            </li>
+            <% } %>
+            <li class="ms-2">
+            <form class="d-flex" action="/search" method="get">
+              <input class="form-control me-2 p-2" name="search" type="text" placeholder="Search by Titles " aria-label="Search">
+              <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+      <section>
+        <div class="container">
+          <h2 class="text-center mt-5" id="postHeader"> share what you have in your mind  </h2>
+          <% if(posts.length> 0) { %>
+            <div class="row">
+              <% for(let post of posts) { %>
+                <div class="col mt-5" style=" max-width: 428px;">
+                  <div class="card bg-navbar" id="card">
+                    <div class="container">
+                      <img src="<%= post.postImage %>" class="card-img-top"
+                        style="max-height: 190px; margin-top: 24px;">
+                      <div class="card-body">
+                        <% if(post.postTitle.length>= 26) { %>
+                        <h3 class="text-uppercase mb-4" id="posttitle" style="max-height: 33px;">
+                          <%= post.postTitle.slice(0, 26).concat('...') %>
+                        </h3>
+                        <% }else{ %>
+                          <h3 class="text-uppercase mb-4" id="posttitle" style="max-height: 33px;"><%= post.postTitle %></h3>
+                          <% } %>
+                        <ul class="list-inline">
+                          <li class="list-inline-item">
+                            <i class="bi bi-person-fill"></i>
+                          </li>
+                          <li class="list-inline-item">
+                            <h6 class="card-subtitle text-muted" id="postwriter">
+                              <%= post.author.userName %>
+                            </h6>
+                          </li>
+                        </ul>
+                        <% if(post.postText.length>= 80) { %>
+                          <p class="card-text">
+                            <%= post.postText.slice(0, 80).concat('...') %>
+                          </p>
+                          <% }else{ %>
+                            <p class="card-text">
+                              <%= post.postText %>
+                            </p>
+                            <% } %>
+                              <ul class="list-inline">
+                                <li class="list-inline-item">
+                                  <small class="text-muted">
+                                    <span class="align-middle">
+                                      <%= new Intl.DateTimeFormat( { year: 'numeric' , month: 'long' , day: '2-digit'
+                                        ,hour: 'long' }).format(post.date) %>
+                                    </span>
+                                  </small>
+                                </li>
+                              </ul>
+                              <ul class="list-inline">
+                                <li class="list-inline-item">
+                                  <a href="/read-more/<%= post._id %>" class="card-link">Read More</a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <% if(displayLink) { %>
+                                    <a href="/post-details/<%= post._id %>" class="card-link">Edit Post </a>
+                                    <% } %>
+                                </li>
+                              </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+            </div>
+            <% }else{ %>
+              <h1>No Post to Show</h1>
+              <% } %>
+        </div>
+      </section>
+
+
+      
+      <% if (pages> 0) { %>
+          <ul class="pagination justify-content-center m-5">
+            <% if (current==1) { %>
+              <li class="disabled page-item"><a class="page-link">First</a></li>
+              <% } else { %>
+                <li class="page-item"><a type=number class="page-link" href="/?page=1">First</a></li>
+                <% } %>
+                  <% var i=(Number(current)> 5 ? Number(current) - 4 : 1) %>
+                    <% if (i !==1) { %>
+                      <li class="disabled page-item"><a class="page-link">...</a></li>
+                      <% } %>
+                        <% for (; i <=(Number(current) + 4) && i <=pages; i++) { %>
+                          <% if (i==current) { %>
+                            <li class="active page-item"><a class="page-link">
+                                <%= i %>
+                              </a></li>
+                            <% } else { %>
+                              <li class="page-item"><a class="page-link" href="/?page=<%= i %>">
+                                  <%= i %>
+                                </a></li>
+                              <% } %>
+                                <% if (i==Number(current) + 4 && i < pages) { %>
+                                  <li class="disabled page-item"><a class="page-link">...</a></li>
+                                  <% } %>
+                                    <% } %>
+                                      <% if (current==pages) { %>
+                                        <li class="disabled page-item"><a class="page-link">Last</a></li>
+                                        <% } else { %>
+                                          <li class="page-item"><a class="page-link"
+                                              href="/?page=<%= pages %>">Last</a></li>
+                                          <% } %>
+          </ul>
+          <% }else{ %>
+            <% } %>
+              
+      
+
+
+       
+
+        <%- include('../includes/end.ejs') %>

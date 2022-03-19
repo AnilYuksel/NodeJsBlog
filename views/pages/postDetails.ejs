@@ -1,0 +1,42 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+  <%- include('../includes/nav.ejs') %>
+
+
+  <section >
+    <div class="d-flex justify-content-center">
+    <div class="card m-5 w-75">
+      <h3 class="card-header" id="posttitle"><%= posts.postTitle %></h3>
+      <div class="card-body">
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <i class="bi bi-person-fill"></i>
+          </li>
+          <li class="list-inline-item">
+            <h6 class="card-subtitle text-muted">
+              <%= posts.author.userName %>
+            </h6>
+          </li>
+        </ul>
+        <hr>
+        <p class="card-text2 lead"><%= posts.postText %></p>
+        <hr>
+        <a href="/" class="btn m-2">Posts</a>
+        <a class="btn m-2" href="/edit-post/<%= posts._id %>">Edit</a>
+              
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+
+              
+  
+  
+      
+
+
+
+  <%- include('../includes/end.ejs') %>

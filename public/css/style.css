@@ -1,0 +1,148 @@
+/* General */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main {
+  flex-grow: 1;
+}
+
+
+/* Font Family */
+#posttitle ,#footertitle{
+  font-family: 'Cinzel', serif;
+  font-size: large;
+}
+p{
+  font-family: 'Didact Gothic', sans-serif;
+}
+#postHeader{
+  font-family: 'Major Mono Display', monospace;
+}
+
+
+/* Color Arrangements */
+.bg-navbar {
+  background-color: rgb(240, 230, 199) !important;
+}
+.page-link {
+  background-color: rgb(240, 230, 199) !important;
+  color: black;
+}
+.btn:focus,
+.btn-link:focus,
+.page-link:focus,
+textarea[type="text"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+input[type="search"]:focus {
+  border-color: rgba(240, 230, 199);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(240, 230, 199);
+  outline: 0 none;
+}
+.btn {
+  background-color: rgb(240, 230, 199) !important;
+  color: black;
+  border-color: rgb(240, 230, 199);
+}
+.btn:hover{
+  color: rgb(175, 175, 175);
+}
+.btn-link{
+  color: #0000008C;
+  text-decoration: none;
+}
+.btn-link:hover {
+  color: rgb(175, 175, 175);
+}
+
+.card-link {
+  color: black;
+}
+.card-link:hover {
+  color: rgb(175, 175, 175);
+}
+.page-item.active .page-link {
+  border-color: rgb(240, 230, 199);
+  color: rgb(175, 175, 175);
+}
+a:hover {
+  color: rgb(175, 175, 175) !important;
+}
+#facebook{
+  color: #3b5998;
+}
+#twitter{
+  color: #1DA1F2;
+}
+#instagram{
+  color: #d6249f;;
+}
+#github{
+  color: #6e5494;
+}
+#linkedin{
+  color: #2867B2;
+}
+
+
+/* Responsive Design */
+@media (min-width: 1400px) {
+  .card-img-top {
+    height: 164px; 
+  }
+    .card-text {
+      height: 72px;
+  }
+  }
+@media (max-width: 1400px) {
+  .card-img-top {
+    height: 164px; 
+  }
+  .card-text {
+    height: 72px;
+  }
+}
+@media (max-width:1200px) {
+  .card-img-top {
+    height: 132px !important; 
+  }
+  .card-text {
+    height: 72px;
+  }
+}
+@media (max-width:992px) {
+  .card-img-top {
+    height: 89px !important; 
+  }
+  .card-text {
+    height: 120px;
+  } 
+  #posttitle {
+    font-size: medium;
+  }
+  #postwriter{
+    font-size: small;
+  }
+}
+@media (max-width:768px) {
+  #card {
+    width: 200px;
+    
+  }
+  .card-text {
+    font-size: small;
+    margin: 0;
+}
+#posttitle{
+  font-size: small;
+}
+}
