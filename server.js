@@ -72,7 +72,7 @@ app.use((req,res,next) => {
 
 
 //server
-const PORT = process.env.PORT;
+const PORT = "https://blogfullnodejs.herokuapp.com/";
 app.listen(PORT, () => {
   console.log(`App Started on ${PORT} : ${process.env.NODE_ENV}`);
 });
